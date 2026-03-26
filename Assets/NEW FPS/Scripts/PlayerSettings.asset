@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f763ac1160fcc44ba5e42297c09930, type: 3}
+  m_Name: PlayerSettings
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSettings
+  walkSpeed: 5
+  runSpeed: 8
+  crouchSpeed: 2.5
+  acceleration: 10
+  deceleration: 10
+  jumpForce: 5
+  gravityMultiplier: 2.5
+  groundCheckDistance: 0.2
+  mouseSensitivity: 2
+  minVerticalAngle: -90
+  maxVerticalAngle: 90
+  invertY: 0
+  enableHeadBob: 1
+  bobSpeed: 10
+  bobAmount: 0.1
+  enableFOVKick: 1
+  runFOV: 75
+  fovSmoothTime: 0.3
+  enableCrouch: 1
+  crouchHeight: 1
+  normalHeight: 2
