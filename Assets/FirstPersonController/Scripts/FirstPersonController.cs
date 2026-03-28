@@ -39,7 +39,6 @@ namespace SimpleFPS
         [SerializeField] private float m_BunnyhopSpeedBonus = 1.15f;      // множитель скорости за стаки
         [SerializeField] private float m_BunnyhopTimingWindow = 0.15f;    // окно для идеального прыжка (сек)
         [SerializeField] private int m_MaxBunnyhopStacks = 5;             // макс бонусов
-        [SerializeField] private float m_BunnyhopDecayRate = 0.5f;        // как быстро спадает буст
         [SerializeField] private float m_BunnyhopGroundGrace = 0.1f;      // время после приземления для бхопа
 
         private Camera m_Camera;
@@ -319,9 +318,8 @@ namespace SimpleFPS
 
             bool waswalking = m_IsWalking;
 
-#if !MOBILE_INPUT
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
+
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
 
