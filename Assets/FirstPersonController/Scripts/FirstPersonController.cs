@@ -123,12 +123,7 @@ namespace SimpleFPS
                 m_MoveDir.y = 0f;
             }
 
-            // Таймер для окна бхопа
-            if (m_CanBunnyhop && Time.time - m_LandTime > m_BunnyhopGroundGrace)
-            {
-                m_CanBunnyhop = false;
-            }
-
+            
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
             // Decay бхант-стаков
