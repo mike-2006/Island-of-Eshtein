@@ -29156,6 +29156,20 @@ MonoBehaviour:
   ChangeCountDesk:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &648043263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648043251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00147473278f1f428066100bc08d159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckDesk
+  bag: {fileID: 0}
+  material: []
 --- !u!1001 &648146797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51071,6 +51085,7 @@ GameObject:
   - component: {fileID: 1223591102}
   - component: {fileID: 1223591101}
   - component: {fileID: 1223591100}
+  - component: {fileID: 1223591103}
   - component: {fileID: 1223591099}
   m_Layer: 0
   m_Name: Cube (2)
@@ -51172,6 +51187,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1223591103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223591098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00147473278f1f428066100bc08d159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckDesk
+  bag: {fileID: 648043257}
+  material:
+  - {fileID: 2100000, guid: 86af88beea2fe2244afcfae2ae0e24bb, type: 2}
 --- !u!1001 &1224790898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70480,9 +70510,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 466189162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -464, y: 283}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -276, y: 165}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624570985
@@ -71643,6 +71673,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       insertIndex: 2
+      addedObject: {fileID: 648043263}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      insertIndex: 3
       addedObject: {fileID: 648043257}
     - targetCorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       insertIndex: -1

@@ -17,7 +17,11 @@ public class Bag : MonoBehaviour
         count_desk += amount;
         ChangeCountDesk.Invoke();
     }
-    
+    public void Remove_Desk(int amount)
+    {
+        count_desk -= amount;
+        ChangeCountDesk.Invoke();
+    }
     public void Draw_Desk(int amount)
     {
         count_desk = amount;
