@@ -39,7 +39,6 @@ namespace SimpleFPS
         [SerializeField] private float m_BunnyhopSpeedBonus = 1.15f;      // множитель скорости за стаки
         [SerializeField] private float m_BunnyhopTimingWindow = 0.15f;    // окно для идеального прыжка (сек)
         [SerializeField] private int m_MaxBunnyhopStacks = 5;             // макс бонусов
-        [SerializeField] private float m_BunnyhopGroundGrace = 0.1f;      // время после приземления для бхопа
 
         private Camera m_Camera;
         public bool m_Jump;
