@@ -161,12 +161,15 @@ namespace SimpleFPS
             float speed;
             GetInput(out speed);
 
+            // Рассчитываем ОДИН РАЗ:
             Vector3 desiredMove = transform.forward * m_SmoothInput.y + transform.right * m_SmoothInput.x;
 
-            RaycastHit hitInfo;
-            Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                                m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+            // Если нужно разное поведение в воздухе/на земле — добавляй модификаторы, не пересчитывай всё:
+            if (!m_CharacterController.isGrounded)
+            {
+                // Например: меньше контроля в воздухе
+                desiredMove *= 0.8f;
+            }
 
             // === ПЛАВНОЕ ДВИЖЕНИЕ ===
             Vector3 targetVelocity = new Vector3(

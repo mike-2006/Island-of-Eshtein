@@ -3,7 +3,22 @@ guid: 5b38e9917e2f6b64098b996913c23d06
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree Bark
+    second: {fileID: 2100000, guid: 3c85b4b26ad0e3f4c8ffd001fff93d8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u043A\u043E\u043A\u043E\u0441"
+    second: {fileID: 2100000, guid: 1e82a795b898afe4e85d0d02ebfd2b7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u043B\u0438\u0442\u0441\u0432\u0430"
+    second: {fileID: 2100000, guid: 0b3694bb2f422224388ac94de0d579fe, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -91,7 +106,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0034999999
+    globalScale: 0.35
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
