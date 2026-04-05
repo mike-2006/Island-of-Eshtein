@@ -5,7 +5,11 @@ using UnityEngine.AI;
 public class Agent_Move : MonoBehaviour
 {
     [SerializeField] private Transform player;
+    [SerializeField] private float updateInterval = 1f;
+
     private NavMeshAgent agent;
+    private float _nextUpdateTime;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -13,6 +17,12 @@ public class Agent_Move : MonoBehaviour
 
     void FixedUpdate()
     {
-        agent.SetDestination(player.position);
+        if (Time.time >= _nextUpdateTime)
+        {
+            agent.SetDestination(player.position);
+            _nextUpdateTime = Time.time + updateInterval;
+        }
+
+        
     }
 }
