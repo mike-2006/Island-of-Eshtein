@@ -1,4 +1,5 @@
 using SimpleFPS;
+using System.Linq;
 using UnityEngine;
 
 public class CheckDesk : MonoBehaviour
@@ -6,17 +7,18 @@ public class CheckDesk : MonoBehaviour
     [SerializeField] private Bag bag;
     [SerializeField] private Renderer[] material;
 
-
+   
     private int i = 0;
     private void OnTriggerEnter(Collider other)
     {
         FirstPersonController fps = other.GetComponent<FirstPersonController>();
         Debug.Log(bag.Get_Desk() > 0);
-        if (fps != null && bag.Get_Desk() > 0 && i < 4)
+        if (fps != null && bag.Get_Desk() > 0 && i < material.Length)
         {
             bag.Remove_Desk(1);
 
-            SetMaterialOpaque(material[i]);
+           material[i].gameObject.GetComponent<BoxCollider>().enabled = true;
+           SetMaterialOpaque(material[i]);
 
             Debug.Log("Изменил материал");
             i ++;

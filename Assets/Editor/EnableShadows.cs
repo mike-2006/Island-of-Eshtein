@@ -14,8 +14,7 @@ public class EnableShadows : EditorWindow
         {
             // Пропускаем игрока и важные объекты
             if (renderer.CompareTag("Player") ||
-                renderer.CompareTag("Enemy") ||
-                renderer.CompareTag("Important"))
+                renderer.CompareTag("Enemy"))
                 continue;
 
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
