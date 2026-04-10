@@ -6,9 +6,11 @@ public class UI_Time_Changer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ui_time;
     [SerializeField] private float deltatime;
 
-    private float current_time;
-    private int time = 10;
+    public int time = 6;
 
+    private float current_time;
+
+    public int CurrentHour => time;
     void Start()
     {
         current_time = Time.time;
@@ -19,8 +21,13 @@ public class UI_Time_Changer : MonoBehaviour
         if (Time.time >= current_time + deltatime)
         {
             time += 1;
+            if(time > 24)
+            {
+                time = 1;
+            }
             ui_time.text = time.ToString() + ":00";
             current_time = Time.time;
+               
         }
     }
 }
