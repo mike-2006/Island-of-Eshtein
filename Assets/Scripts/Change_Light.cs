@@ -2,50 +2,24 @@ using UnityEngine;
 
 public class Change_Light : MonoBehaviour
 {
-    [SerializeField] private Light sunLight;
-    [SerializeField] private Light moonLight;
+    [SerializeField] private Light main_Light;
 
     [SerializeField] private UI_Time_Changer time_Changer;
 
 
-    // Update is called once per frame
     void Update()
     {
-        bool isDay = (time_Changer.CurrentHour >= 12 && time_Changer.CurrentHour < 19);
-        bool isLateDay = (time_Changer.CurrentHour > 18);
-        bool isEarlyNight = (time_Changer.CurrentHour < 7);
+        bool isEarlyDay = (time_Changer.CurrentHour > 5 && time_Changer.CurrentHour < 14);
+        bool isLateDay = (time_Changer.CurrentHour > 13 && time_Changer.CurrentHour < 20);
+        bool isEarlyNight = (time_Changer.CurrentHour > 19);
+        bool isLateNight = (time_Changer.CurrentHour < 6);
 
-        if (isDay)
-        {
-            sunLight.enabled = true;
-            sunLight.intensity = Mathf.Lerp(sunLight.intensity, 2, Time.deltaTime * 0.6f);
+        float targetIntensivity = isEarlyDay ? 2 : isLateDay ? 1.25f : isEarlyNight ? 0.75f : 0.4f; 
+        float targetTemperature = isEarlyDay ? 4000 : isLateDay ? 7000 : isEarlyNight ? 11000 : 14000;
 
-            moonLight.enabled = false;
-            moonLight.intensity = 1;
-        }
-        else if (isLateDay)
-        {
-            sunLight.enabled = true;
-            sunLight.intensity = Mathf.Lerp(sunLight.intensity, 0.5f, Time.deltaTime * 0.6f);
+        main_Light.intensity = Mathf.Lerp(main_Light.intensity, targetIntensivity, Time.deltaTime * 0.4f);
+        main_Light.colorTemperature = Mathf.Lerp(main_Light.colorTemperature, targetTemperature, Time.deltaTime * 0.4f);
 
-            moonLight.enabled = false;
-            moonLight.intensity = 1;
-        }
-        else if (isEarlyNight)
-        {
-            moonLight.enabled = true;
-            moonLight.intensity = Mathf.Lerp(moonLight.intensity, 0.3f, Time.deltaTime * 0.6f);
 
-            sunLight.enabled = false;
-            sunLight.intensity = 0.5f;
-        }
-        else
-        {
-            moonLight.enabled = true;
-            moonLight.intensity = Mathf.Lerp(moonLight.intensity, 1f, Time.deltaTime * 0.6f);
-
-            sunLight.enabled = false;
-            sunLight.intensity = 0.5f;
-        }
     }
 }
