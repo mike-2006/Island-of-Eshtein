@@ -5,8 +5,7 @@ using UnityEngine.AI;
 public class Agent_Move : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private float updateInterval = 1f;
-    [SerializeField] private float speed = 15f;
+    [SerializeField] private float updateInterval = 0.5f;
 
     private NavMeshAgent agent;
     private float _nextUpdateTime;
@@ -20,32 +19,12 @@ public class Agent_Move : MonoBehaviour
 
     void Update()
     {
-        // === ÃËÀÂÍÎÅ: ÍÅ ÂÛÇÛÂÀÅÌ SetDestination ÅÑËÈ ÏÓÒÜ ÓÆÅ Ñ×ÈÒÀÅÒÑß! ===
-        if (agent.pathPending)
+
+        // Îáíîâëÿåì öåëü ñ èíòåðâàëîì
+        if (Time.time >= _nextUpdateTime)
         {
-            agent.isStopped = true;
-
-            Vector3 direction = (player.position - transform.position).normalized;
-            direction.y = 0;
-
-            if (direction != Vector3.zero)
-            {
-                transform.position += direction * speed * Time.deltaTime;
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
-
-            return; // Âûõîäèì, íå âûçûâàåì SetDestination ïîêà ñ÷èòàåòñÿ
-        }
-        if (agent.hasPath)
-        {
-            agent.isStopped = false;
-
-            // Îáíîâëÿåì öåëü ñ èíòåðâàëîì
-            if (Time.time >= _nextUpdateTime)
-            {
-                agent.SetDestination(player.position);
-                _nextUpdateTime = Time.time + updateInterval;
-            }
+            agent.SetDestination(player.position);
+            _nextUpdateTime = Time.time + updateInterval;
         }
 
 
