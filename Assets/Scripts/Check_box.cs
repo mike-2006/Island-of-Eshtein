@@ -2,24 +2,35 @@ using UnityEngine;
 
 public class Check_box : MonoBehaviour
 {
-    public GameObject openVuisual;
-    public GameObject closeVuisual;
+    public GameObject openVisual;
+    public GameObject closeVisual;
 
-    private bool isopen = false;
+    public bool isopen = false;
 
-    private void OnInteraction()
+    private void Start()
+    {
+        UpdateVisual();
+    }
+    public void OnInteraction()
+    {
+        isopen = !isopen;
+
+        UpdateVisual();
+
+        Debug.Log(isopen ? "ящик открыт!" : "ящик закрыт!");
+    }
+    private void UpdateVisual()
     {
         if (isopen)
         {
-            openVuisual.SetActive(false);
-            closeVuisual.SetActive(true);
-            isopen = false;
+            openVisual.SetActive(true);
+            closeVisual.SetActive(false);
         }
         else
         {
-            closeVuisual.SetActive(false);
-            openVuisual.SetActive(true);
-            isopen = true;
+            openVisual.SetActive(false);
+            closeVisual.SetActive(true);
+           
         }
     }
 }
