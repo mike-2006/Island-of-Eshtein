@@ -1,4 +1,4 @@
-# 🏝️ Сбежать с острова Эштейна (Escape from Einstein Island)
+# 🏝️ Сбежать с острова Эштейна (Escape from Eshtein Island)
 
 ## 📖 Описание проекта
 Проект представляет собой прототип мобильной игры в жанре Survival/Adventure на движке Unity. 
