@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+/// <summary>
+/// Класс управления перемещением NPC с использованием NavMeshAgent.
+/// Реализует логику преследования игрока с периодическим пересчетом пути
+/// </summary>
 public class Agent_Move : MonoBehaviour
 {
     [SerializeField] private Transform player;
@@ -9,25 +13,32 @@ public class Agent_Move : MonoBehaviour
 
     private NavMeshAgent agent;
     private float _nextUpdateTime;
-
+    /// <summary>
+    /// Инициализация компонента при старте игры.
+    /// Получает ссылку на NavMeshAgent и устанавливает начальную цель.
+    /// Входные данные: Отсутствуют (используются сериализуемые поля).
+    /// Выходные данные: Инициализированный агент с установленным маршрутом.
+    /// </summary>
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(player.position);
         _nextUpdateTime = Time.time + updateInterval;
     }
-
+    /// <summary>
+    /// Основной цикл обновления логики движения. Вызывается каждый кадр.
+    /// Проверяет истечение интервала и обновляет destination агента.
+    /// Входные данные: Текущее состояние сцены и позиция игрока.
+    /// Выходные данные: Обновленный маршрут агента (побочный эффект).
+    /// </summary>
     void Update()
     {
-
         // Обновляем цель с интервалом
         if (Time.time >= _nextUpdateTime)
         {
             agent.SetDestination(player.position);
             _nextUpdateTime = Time.time + updateInterval;
         }
-
-
     }
 
     private void OnDrawGizmosSelected()

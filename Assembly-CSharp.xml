@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assembly-CSharp-Editor</name>
+    </assembly>
+    <members>
+        <member name="T:EckTechGames.AutoSave.AutoSaveExtension">
+            <summary>
+            This static class registers the autosave methods when playmode state changes
+            in the editor.
+            </summary>
+        </member>
+        <member name="M:EckTechGames.AutoSave.AutoSaveExtension.#cctor">
+            <summary>
+            Static constructor that gets called when Unity fires up or recompiles the scripts.
+            (triggered by the InitializeOnLoad attribute above)
+            </summary>
+        </member>
+        <member name="M:EckTechGames.AutoSave.AutoSaveExtension.AutoSaveWhenPlaymodeStarts(UnityEditor.PlayModeStateChange)">
+            <summary>
+            This method saves open scenes and other assets when entering playmode. 
+            </summary>
+            <param name="playModeStateChange">The enum that specifies how the playmode is changing in the editor.</param>
+        </member>
+        <member name="T:UnitySourceGeneratedAssemblyMonoScriptTypes_v1.MonoScriptData">
+            <summary>
+            Data is UTF-8 encoded strings
+            </summary>
+        </member>
+    </members>
+</doc>
