@@ -19,6 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     private RotateTo currentDoor;
 
     private bool hasKey = false;
+    private bool doorOpen = false;
     /// <summary>
     /// Основной цикл обновления. Вызывается каждый кадр.
     /// Проверяет наличие объекта для взаимодействия и нажатие клавиши.
@@ -41,6 +42,7 @@ public class PlayerInteraction : MonoBehaviour
         else if (currentDoor != null && Input.GetKeyDown(interact_e) && hasKey)
         {
             currentDoor.enabled = true;
+            doorOpen = true;
         }
 
     }
@@ -88,13 +90,15 @@ public class PlayerInteraction : MonoBehaviour
             {
                 currentDoor = door;
 
-                hint_text.gameObject.SetActive(true);
+                
                 if (hasKey == false)
                 {
+                    hint_text.gameObject.SetActive(true);
                     hint_text.text = "Дверь заперта, возможно нужен ключ чтобы открыть её";
                 }
-                else
+                else if (doorOpen == false && hasKey == true)
                 {
+                    hint_text.gameObject.SetActive(true);
                     hint_text.text = "Нажми [E] чтобы открыть дверь";
                 }
 
