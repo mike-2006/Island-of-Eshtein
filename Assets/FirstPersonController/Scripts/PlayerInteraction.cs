@@ -9,11 +9,13 @@ public class PlayerInteraction : MonoBehaviour
 {
     public float interactDistance = 2.5f;
     public KeyCode interact_e = KeyCode.E;
+    float sphereRadius = 0.1f;
 
     public Camera playerCamera;
     public TextMeshProUGUI hint_text;
 
     private Check_box currentBox;
+    private Key currentKey;
     /// <summary>
     /// Основной цикл обновления. Вызывается каждый кадр.
     /// Проверяет наличие объекта для взаимодействия и нажатие клавиши.
@@ -22,11 +24,15 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        CheckForLootBox();
-
+        CheckForInteractable();
         if (currentBox != null && Input.GetKeyDown(interact_e))
         {
             currentBox.OnInteraction();
+            
+        }
+        else if (Input.GetKeyDown(interact_e) && currentKey != null)
+        {
+            currentKey.Pickup();
         }
     }
 
@@ -36,31 +42,40 @@ public class PlayerInteraction : MonoBehaviour
     /// Входные данные: Позиция и направление камеры, настройка дистанции.
     /// Выходные данные: Обновление переменной currentBox (ссылка на объект или null),
     /// </summary>
-    private void CheckForLootBox()
+    private void CheckForInteractable()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, interactDistance))
+        currentBox = null;
+        currentKey = null;
+
+        if (Physics.SphereCast(ray, sphereRadius, out hit, interactDistance))
         {
             Check_box lootbox = hit.collider.GetComponent<Check_box>();
             if (lootbox != null)
             {
                 currentBox = lootbox;
                 hint_text.gameObject.SetActive(true);
-                if (currentBox.isopen)
-                {
-                    hint_text.text = "Нажми [E] чтобы закрыть";
-                }
-                else
-                {
-                    hint_text.text = "Нажми [E] чтобы открыть";
-                }
+                hint_text.text = currentBox.isopen ? "Нажми [E] чтобы закрыть" : "Нажми [E] чтобы открыть";
                 return;
             }
+
+            Key key = hit.collider.GetComponent<Key>();
+            if (key != null)
+            {
+                currentKey = key;
+
+                hint_text.gameObject.SetActive(true);
+                hint_text.text = "Нажми [E] чтобы взять ключ";
+
+
+                return;
+            }
+
         }
 
-        currentBox = null; // Забываем ящик
+        
         hint_text.gameObject.SetActive(false);
     }
 
