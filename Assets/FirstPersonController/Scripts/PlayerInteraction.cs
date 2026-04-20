@@ -13,6 +13,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public Camera playerCamera;
     public TextMeshProUGUI hint_text;
+    [SerializeField] private GameObject boxWithKey;
+    [SerializeField] private GameObject Key;
 
     private Check_box currentBox;
     private Key currentKey;
@@ -32,6 +34,10 @@ public class PlayerInteraction : MonoBehaviour
         if (currentBox != null && Input.GetKeyDown(interact_e))
         {
             currentBox.OnInteraction();
+            if (boxWithKey == currentBox.gameObject)
+            {
+                Key.SetActive(true);
+            }
             
         }
         else if (Input.GetKeyDown(interact_e) && currentKey != null)
